@@ -1,0 +1,80 @@
+{
+  "name": "Order",
+  "type": "object",
+  "properties": {
+    "student_id": {
+      "type": "string",
+      "description": "ID of the student who placed the order"
+    },
+    "student_name": {
+      "type": "string",
+      "description": "Name of the student"
+    },
+    "student_email": {
+      "type": "string",
+      "description": "Email of the student"
+    },
+    "token_number": {
+      "type": "string",
+      "description": "Unique token number for this order"
+    },
+    "items": {
+      "type": "array",
+      "description": "List of ordered items",
+      "items": {
+        "type": "object",
+        "properties": {
+          "item_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "quantity": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "total_amount": {
+      "type": "number",
+      "description": "Total order amount"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "preparing",
+        "ready",
+        "completed",
+        "cancelled"
+      ],
+      "default": "pending",
+      "description": "Current status of the order"
+    },
+    "estimated_time": {
+      "type": "number",
+      "description": "Estimated preparation time in minutes"
+    },
+    "order_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Time when the order was placed"
+    },
+    "ready_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Time when the order is ready"
+    }
+  },
+  "required": [
+    "student_id",
+    "student_name",
+    "token_number",
+    "items",
+    "total_amount"
+  ]
+}
